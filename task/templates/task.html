@@ -39,11 +39,12 @@
         {% if task %}
         <tr class="{{ 'text-info' if task.week_no==this_week }}">
           <th scope="row">{{task.id}}</th>
-          <td>{{task.task_name}}</td>
+          <td id="change">{{task.task_name}}</td>
           <td>{{task.date_to_be_completed}}</td>
           <td>
-          <input type="submit" name="submit" class="btn btn-outline btn-info mb-3" value="Done"></input>
-          <span>
+            {% set taskName = task.task_name %}
+          <!-- <input type="submit" name="submit" class="btn btn-outline btn-info mb-3" value="Done" onclick="change()"></input>
+          <span> -->
             <form action="{{url_for('tasks',name=name)}}" method='POST'>
               <input type=hidden value="{{task.id}}"name="task_delete"/>
               <input type="submit" name="submit" class="btn btn-outline btn-success "  value="Delete"></input>
@@ -56,4 +57,13 @@
     </tbody>
   </table>
 </div>
+
+
+
+<!-- <script>
+  function change(e)
+  {  
+    console.log("working")
+  } -->
+</script>
 {% endblock %}
